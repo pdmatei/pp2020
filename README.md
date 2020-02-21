@@ -2,9 +2,9 @@
 
 ## Functional programming
 
-* *Lecture 1* Four implementations for reversal:
+* *Lecture 1*: Four implementations for reversal:
   * Imperative, in-place ![source](url)
-  * Using ADTs ![source](url)
+  * Using ADTs ![source](https://github.com/pdmatei/pp2020/blob/master/L01/TDA.java)
   * Using iterators ![source](url)
   * Using a fold operation ![source](url)
 * *Lecture 2*: 
