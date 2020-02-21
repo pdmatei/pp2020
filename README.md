@@ -1,4 +1,4 @@
-# Repo for lecture notes
+# Repo for Programming Paradigms lecture notes
 
 ## Functional programming
 
