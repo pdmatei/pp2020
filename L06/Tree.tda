@@ -1,0 +1,45 @@
+
+
+Tree
+----
+
+Void : Tree
+Node : Tree x Int x Tree -> Tree
+
+size : Tree -> Int
+
+flatten : Tree -> List
+flatten (Void) = []
+flatten (Node(l,k,r)) = flatten(l)++(k:flatten(r))
+
+
+mirror : Tree -> Tree
+
+
+     3                    3
+    / \     mirror       / \
+   2   0     ---->      0   2
+  / \                      / \
+ 1   4                    4   1
+
+mirror (Void) = Void
+mirror (Node(l,k,r)) = Node (mirror(r),k,mirror(l))
+
+
+map : (A -> B) x Tree<A> -> Tree<B>
+
+f(x) = f if x is odd, and t otherwise
+
+     3                    f
+    / \     map f        / \
+   2   0     ---->      t   t
+  / \                  / \
+ 1   4                f   t
+
+
+map(f,Void) = Void
+map(f,Node(l,k,r)) = Node(map(f,l),f(k),map(f,r))
+
+
+
+

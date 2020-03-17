@@ -22,3 +22,10 @@
     * The Haskell package Easyplot, together with the plotting tool Gnuplot should be installed
   * The plotted data together with a possible linear model [source](https://github.com/pdmatei/pp2020/blob/master/L05/model-1.png)
   * The cost (or error) function which plots, for each model parameter (a,b), the square error of the model at hand [source](https://github.com/pdmatei/pp2020/blob/master/L05/error.png)
+
+* **Lecture 6**:
+  * Abstract (or Algebraic) Datatypes in Haskell.
+  * A formal specification of the datatype Tree [source](https://github.com/pdmatei/pp2020/blob/master/L06/Tree.tda) 
+  * A Java implementation of Tree [source](https://github.com/pdmatei/pp2020/blob/master/L06/Trees.java)
+  * A Haskell implementation of Tree [source](https://github.com/pdmatei/pp2020/blob/master/L06/Tree.hs)  
+
