@@ -29,3 +29,8 @@
   * A Java implementation of Tree [source](https://github.com/pdmatei/pp2020/blob/master/L06/Trees.java)
   * A Haskell implementation of Tree [source](https://github.com/pdmatei/pp2020/blob/master/L06/Tree.hs)  
 
+* **Lecture 7**:
+  * Programming with ADT's in Haskell:
+  * Polymorphic trees, formulas: [source](https://github.com/pdmatei/pp2020/blob/master/L07/formula.hs)
+  * Syntactic trees (for programs): [source](https://github.com/pdmatei/pp2020/blob/master/L07/prog_without_check.tda)  
+
