@@ -34,3 +34,11 @@
   * Polymorphic trees, formulas: [source](https://github.com/pdmatei/pp2020/blob/master/L07/formula.hs)
   * Syntactic trees (for programs): [source](https://github.com/pdmatei/pp2020/blob/master/L07/prog_without_check.tda)  
 
+* **Lecture 8**:
+  * Ad-hoc vs parametric polymorphism.
+  * Ad-hoc polymorphism in Java: method overriding [source](https://github.com/pdmatei/pp2020/blob/master/L08/Polymorphism.java)
+  * Ad-hoc polymorphism in Haskell: typeclasses [source](https://github.com/pdmatei/pp2020/blob/master/L08/polymorphism.hs)
+
+* **Lecture 9**:
+  * Writing your own typeclass in Haskell [source](https://github.com/pdmatei/pp2020/blob/master/L09/Eval.hs)
+  * A few words about type constructors [source](https://github.com/pdmatei/pp2020/blob/master/L09/type_constructors.hs)
