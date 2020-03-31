@@ -42,3 +42,22 @@
 * **Lecture 9**:
   * Writing your own typeclass in Haskell [source](https://github.com/pdmatei/pp2020/blob/master/L09/Eval.hs)
   * A few words about type constructors [source](https://github.com/pdmatei/pp2020/blob/master/L09/type_constructors.hs)
+
+* **Lecture 10** - The lambda Calculus:
+  * An interpreter for the lambda calculus [source](https://github.com/pdmatei/pp2020/blob/master/L10/lambda.hs)
+    * To compile, run `ghc -o lambda lambda.hs`
+    * Use `:t <lambda_expression>` to check the *type* of a lambda expression
+    * `fv <lambda_expression>` returns the set of free variables from a lambda expression
+    * `bv <lambda_expression>` returns the set of bound variables from a lambda expression
+    * `<lambda_expression>` evaluates a lambda expression using the applicative strategy
+    * `evalnorm <lambda_expression>` evaluates a lambda expression using the normal strategy
+    * `debug` enters debugging mode:
+      * `evalapp <lambda_expression>` performs step-by-step evaluation using the applicative strategy
+      * `evalnorm <lambda_expression>` performs step-by-step evaluation using the normal strategy
+      * `quit` stops the evaluation process. Another `quit` command exits debugging mode
+
+  * Lecture notes for the lambda calculus [source](https://github.com/pdmatei/pp2020/blob/master/L10/lecture_notes.txt)
+  * Live lecture notes [source](https://github.com/pdmatei/pp2020/blob/master/L10/live_notes.hs)
+
+
+

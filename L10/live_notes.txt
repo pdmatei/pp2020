@@ -1,0 +1,162 @@
+{-
+    Calcul Lambda. Inventat de Alonzo Church. 1930 (dupa aparitia Masinii Turing).
+    Scopul?
+    - sisteme formale in care sa poata "descrie" matematica.
+     "Descriere a matematicii" - Hilbert (Programul lui Hilbert). 
+                                           -> gasirea unui model formal care sa poata sa descrie matematica.
+
+    Godel -> un model formal pentru matematica nu poate exista.
+
+    Sistem formal           <=>  limbaj de programare
+    Propozitii matematice   <=>  un program
+    a^2 + b^2 = c^2
+
+    Este propozitia matem.       <=> output-ul programului
+    valida? (mereu adevarata?)
+    O teorema?
+
+    Masina Turing / Calcul Lambda -> limbaje de programare (in absenta unei masini)
+
+
+    Obiective:
+      1) ce face interpretorul de Calcul Lambda? (cum arata programele?)
+      2) cum putem folosi programe lambda (lambda expresii) pentru a scrie algoritmi
+      3) cum anume este construit interpretorul? (cum functioneaza?)
+
+    
+    Motivatia?
+      - modelul cel mai simplu de programare cu functii (de ordin superior)
+    ------------------------------------------------------
+    |  - modelul cel mai simplu pentru EVALUAREA LENESA  |
+    ------------------------------------------------------
+
+
+    "Masina Turing (K,Sigma,delta,q0,F)"
+     hardware -> von Neuman
+
+    "Calcul Lambda" (1930)
+     hardware -> Algol (anii 60)
+
+    "Machine Learning" (1970-1980)
+     hardware -> "deep learning" (2010) 
+
+
+    1) Cum arata programele?
+        In calculul lambda:
+          - nu exista valori (si tipuri) primitive conventionale (string-uri, integer, char)
+          - nu putem boteza, sau NUMI lambda-expresii. (nu vom putea defini recursivitate)
+
+        Calculul lambda consta in:
+          - variabile (precum x)
+          - functii, precum λx.x
+          - aplicatii, precum (f x)
+
+        Sintaxa calculului lambda:
+          - x este o lambda-expresie dintr-o multime finita (implicita)
+          - λx.e este o lambda-expresie DACA e este o lambda-expresie
+          - (e e') este o lambda-expresie DACA e si e' sunt lambda-expresii
+
+
+        In Haskell - instructiuni (constructii de limbaj) cu care putem programa
+                       - definirea de functii, pattern matching, case, guards, where
+
+    
+    1bis) Ce face interpretorul? (cum evalueaza el programe?)
+
+       (*)   interpretorul (de calcul lambda) evalueaza numai aplicatii, niciodata functii sau variabile
+       (**)  interpretorul evalueaza aplicatii, chiar si atunci cand sunt imbricate
+       (***) cum se evalueaza o aplicatie?
+
+              <corp> si <arg> sunt lambda-expresii
+            (λx.<corp> <arg>) = inlocuim toate APARITIILE PARAMETRULUI FORMAL x
+                                               cu <arg>, in corpul functiei (in <corp>)
+            (λx.(x x) (f y)) = ((f y) (f y))                               
+
+      Test:
+      ((λx.x λy.y) (λx.z λw.w))
+      (λy.y (λx.z λw.w))
+      (λy.y z)
+      z      
+
+      λy.y  si   λx.x
+      NICI O DIFERENTA!!
+      
+      (λx.(x λx.x) λy.y)
+      (λy.y λx.x)
+      λx.x
+
+      2. Ce fel de expresii lambda utile pt programatori putem scrie?
+          
+          λx.x - functia identitate
+          λx.y - functia constanta
+          λf.λx.(f x) - "aplicatia" sau ($) din Haskell
+
+          λx.λy.x - fctia care primeste doi parametrii si intoarce pe primul
+          λx.λy.y - fctia care primeste doi parametrii si intoarce pe al doilea
+
+
+          Codificari:
+          ----------- 
+             - programe (lambda-expresii, functii-primesc:
+                                           - un input:   variabila       (nu)
+                                                         lambda-expresie (daca incercam - nu merge)
+                                                         o functie (CORECT) λx.corp
+                                           - si scot un output: o functie 
+
+          (x (y (z w))) - numarul 3 (cele trei aplicatii)
+            - nu stim sa scriem functii care opereaza cu numere codificate astfel.
+
+          
+          Codificam booleni, si operatii boolene.
+
+          TRUE = λx.λy.x   (selectorul primului parametru)
+          FALSE = λx.λy.y  (selectorul celui de-al doilea parametru)
+
+          AND : Bool -> Bool -> Bool
+                Func    Func    Func
+          
+          AND = λa.λb.((a b) a)
+
+          AND TRUE FALSE
+
+          ((λa.λb.((a b) a) λx.λy.x) λx.λy.y)
+
+                λb.((λx.λy.x b) λx.λy.x)
+          (λb.((λx.λy.x b) λx.λy.x) λx.λy.y)
+          ((f arg) ...)
+          (f' ...)
+
+          (λb.((λx.λy.x b) λx.λy.x) λx.λy.y)
+
+          ((λx.λy.x λx.λy.y) λx.λy.x)
+
+           (λx.λy.x arg)
+           \x -> \y -> x
+           \x y->x
+ 
+           ((\x y->x arg) ? )
+
+          
+          (λy.λx.λy.y λx.λy.x)
+
+          λy.λx.λy.y = λz.λx.λy.y
+          λy.λx.λy.y = λy.λx.λz.z 
+
+          λx.λy.y = FALSE
+
+
+          TRUE = λx.λy.x   (selectorul primului parametru)
+          FALSE = λx.λy.y  (selectorul celui de-al doilea parametru)
+
+          OR = λa.λb.((a a) b)
+          OR : Bool -> Bool -> Bool
+
+          OR = λa.λb.(a (a b))
+                     trebuie sa intoarca o valoare booleana
+
+          Cine este (a b) (unde a si b sunt booleni)?
+            La ce se evalueaza ea?
+
+
+
+-}

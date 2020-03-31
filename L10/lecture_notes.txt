@@ -1,0 +1,187 @@
+
+{- 
+
+    Introduction:
+    -------------
+
+    The lambda Calculus what invented in around 1930, with an aim to settle Hilbert's Program:
+    - develop a formal system for mathematics
+      (this was later shown impossible by Godel)
+    
+    Many scientists developed many formal systems that were insufficient to capture mathematics as a whole.
+      - Alan Turing
+      - Alonzo Church
+    
+    Their formal systems is what today we would call programming language.
+
+    Formal system                         = programming language
+    Mathematical proposition              = a program
+    Example:  
+    "In a right triangle a^2 + b^2 = c^2"
+    
+    Is the proposition valid              = the output of a program 
+    (allways true) 
+    
+	The lambda calculus:
+	--------------------
+
+	To make the discussion more "current", we shall present the Lambda Calculus as a programming
+	language. "Lambda" is an interpreter for the Lambda Calculus.
+    
+    In this lecture, our objective is to:
+       1) have a look at what the interpreter does / how do programs look like?
+       2) see how we could use it (and the Lambda Calculus) to write programs
+          that actually do something meaningful
+       3) have a look at how the interpreter is designed (how the Lambda Calculus works)
+
+    Why?
+    Looking at the Lambda Calculus helps us better understand functional programming languages
+    and programming in general, especially:
+        - programming with functions (something you have already seen in Haskell)
+      -------------------------------------------------------
+     |  - lazy vs applicative evaluation (something new!)    |
+      -------------------------------------------------------
+     
+
+    1) How do programs look like?
+       (What is Lambda Calculus? (abbreviated LC))
+
+       At a first glance, in the LC, numbers, lists, strings, bools, or other usual basic types
+       do not exist.
+
+       However, it does contain:
+         - variables, such as x. Variables have only one letter (which is just for convenience)
+
+       In Haskell, we had to learn a lot of programming constructs, instructions, like for instance:
+         - function definition, pattern matching, case instructions, guards, where
+
+       What are the programming constructs in LC?
+         - functions, such as: λx.x
+         - applications, such as: (f x), but also (y x)
+         - and variables.
+
+
+       Expressions in LC have a type? The answer is "yes", and we can investigate that type
+       with :t.
+       Examples:
+       x :: Var
+       λx.x :: Func
+       (f x) :: App
+
+       (λx.x a) :: App
+       (f λx.x) :: App
+       λf.λx.(f x) :: Func
+       
+       The latter examples show what we can construct more complicated lambda expressions from
+       simpler ones, using App and Func. For instance, the last example is the equivalent of ($) in Haskell.
+
+       What is missing?
+        - basic types
+        - functions have a single parameter, applications take a single argument
+        - let declarations: the only program we can input is that written on the line:
+        Lambda> ...
+           we cannot define functions to be something, or applications to be something
+
+       With that in mind, we can say that a lambda expression is:
+        - a variable 
+           (example x)
+        - λx.e where x is a variable and e is another lambda expression
+           (example: λf.λx.(f x)) 
+        - (e e') where e and e' are other lambda expressions
+           (example: (f λx.x))
+
+
+    1bis) What the interpreter does?
+    
+     We can input the following lambda expressions and see what the interpreter does:
+      - (λx.x a)
+      - (λx.a y)
+      - (λx.a (f y))
+
+      - (λf.λx.(f x) λy.a)  reduces to: λx.(λy.a x)
+      - (λy.a x)    reduces to: a
+
+      - ((λx.x λy.w) λz.z)
+
+     Conclusion:
+      (*) the intepreter only evaluates applications, never functions, even if they
+       	  contain other applications
+      (**) application means exactly "function evaluation", in which the formal parameter
+            - the x, in the λx, is replaced by the argument, in the function body
+
+      (**) the interpreter evaluates applications even if they are nested.
+      	   at this point, it is useful to look at another feature of the interpreter.
+
+      	   The debug mode shows the evaluation steps followed by the interpreter:
+      	   ((λx.x λy.w) λz.z) => (λy.w λz.z) => w
+
+      	   here => means "evaluates to"
+
+
+	Exercise: What does ((λx.x λy.y) (λx.z λw.w)) evaluate to?
+	        ((λx.x λy.y) (λx.z λw.w)) => (λy.y (λx.z λw.w)) => (λy.y z) => z
+
+     
+     Thus, Lambda performs function application: arguments are Lexpressions, results are
+     also Lexpressions.
+
+     -----------------------------------------------
+     2) What useful things can we program in LC ?
+     -----------------------------------------------
+
+     So far, in the previous examples, we recognised a few known functions:
+        - λx.x  - the identity function
+        - λx.y  - the constant function
+        - λf.λx.(f x) - function application 
+
+     Another easily recognizable functions are:
+        λx.λy.x  - receives two arguments and selects the first one
+        λx.λy.y  - receives two arguments and selects the second one
+
+     We can use these, and a few more, to encode booleans, boolean and, negation, and later on,
+     numbers, addition, etc.
+
+
+     As with Turing Machines, were we used strings on the tape to encode different things,
+     here, we shall use FUNCTIONS to encode different things.
+
+     Suppose λx.λy.x encodes the value TRUE
+             λx.λy.y                   FALSE
+
+     Let us build a function AND :: Bool -> Bool -> Bool.
+     Careful, in the LC, AND is implicitly defined as:
+     AND :: Func -> Func -> Func
+     i.e. it takes two functions encoding booleans and returns a function encoding a boolean.
+
+
+     AND = λa.λb. ?
+     ((λa.λb.? λx.λy.x) λx.λy.x) => TRUE
+     ((λa.λb.? _) _) => FALSE
+
+     AND needs to work only if parameters are booleans. Otherwise, we don't care.
+     	thus, a and b can only be λx.λy.x(TRUE) and λx.λy.y(FALSE)
+
+     AND = λa.λb.((a b) a)
+                  if a is true, it will return b, 
+                  if a is false, it will return itself, which is false no matter what b is
+
+     Test:
+     ((λa.λb.((a b) a) λx.λy.x) λx.λy.x)               	
+
+     Following the debug, this reduction deserves some discussion:
+     (λy.λx.λy.x λx.λy.x)
+
+     here, the lhs is a function λy. λx.λy.x where 
+                                     body (y is not free in the body), so this is a
+                                     more elaborate constant function, which always returns
+                                     λx.λy.x
+
+     This will bring us to the next lecture, to discuss:
+        - more about what can we program in the lambda calculus
+        - how the interpreter is designed (how does it work?)
+
+     
+
+       
+
+-}
