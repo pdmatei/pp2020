@@ -57,7 +57,7 @@
       * `quit` stops the evaluation process. Another `quit` command exits debugging mode
 
   * Lecture notes for the lambda calculus [source](https://github.com/pdmatei/pp2020/blob/master/L10/lecture_notes.txt)
-  * Live lecture notes [source](https://github.com/pdmatei/pp2020/blob/master/L10/live_notes.hs)
+  * Live lecture notes [source](https://github.com/pdmatei/pp2020/blob/master/L10/live_notes.txt)
 
 
 
