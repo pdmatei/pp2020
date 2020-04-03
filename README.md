@@ -59,5 +59,8 @@
   * Lecture notes for the lambda calculus [source](https://github.com/pdmatei/pp2020/blob/master/L10/lecture_notes.txt)
   * Live lecture notes [source](https://github.com/pdmatei/pp2020/blob/master/L10/live_notes.txt)
 
+* **Lecture 11** - Numbers and number programming in the Lambda Calculus:
+  * Slides: [source](https://github.com/pdmatei/pp2020/blob/master/L11/Lambda-Calculus.pptx)
+  
 
 
