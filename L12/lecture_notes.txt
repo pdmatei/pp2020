@@ -1,0 +1,25 @@
+
+=> reducere intr-un pas
+
+(λx.(x λx.(x x)) y) -> (x λx.(x x))[x/y] -> (y λx.(x x))
+                    ======================>
+
+(λy.λx.(λy.y λy.y) λy.y) -> λx.(λy.y λy.y)[y/λy.y] -> λx.(λy.y λy.y)
+                         ===========================>
+
+(λx.(x x) λx.(x y)) -> (x x)[x/λx.(x y)] -> (λx.(x y) λx.(x y)) ->
+                   =======================>                    ====
+   (x y)[x/λx.(x y)] -> (λx.(x y) y) -> (x y)[x/y] -> (y y)
+  ====================>              ===============>
+
+(λx.λy.(x y) y) =>
+λy.(y y)            incorect
+
+
+λy.(λx.λy.(x y) y)
+λy.λy.(y y)         nu sunt echivalente
+
+λy.(λx.λz.(x z) y)  intr-adevar sunt echivalente
+λy.λz.(y z)
+
+

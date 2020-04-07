@@ -62,5 +62,8 @@
 * **Lecture 11** - Numbers and number programming in the Lambda Calculus:
   * Slides: [source](https://github.com/pdmatei/pp2020/blob/master/L11/Lambda-Calculus.pptx)
   
+* **Lecture 12** - Substitution and random-order evaluation in the Lambda Calculus:
+  * Slides: [source](https://github.com/pdmatei/pp2020/blob/master/L12/Substitution.pptx)
+  * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L12/lecture_notes.txt)
 
 
