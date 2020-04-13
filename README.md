@@ -66,4 +66,6 @@
   * Slides: [source](https://github.com/pdmatei/pp2020/blob/master/L12/Substitution.pptx)
   * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L12/lecture_notes.txt)
 
+* **Lecture 13** - Normal & Applicative evaluation in the Lambda Calculus:
+  * Slides: [source](https://github.com/pdmatei/pp2020/blob/master/L13/Evaluation.pptx)
 
