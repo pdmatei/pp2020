@@ -69,3 +69,8 @@
 * **Lecture 13** - Normal & Applicative evaluation in the Lambda Calculus:
   * Slides: [source](https://github.com/pdmatei/pp2020/blob/master/L13/Evaluation.pptx)
 
+* **Lecture 14** - Lazy programming in Haskell:
+  * Tic-Tac-Toe Slides: [source](https://github.com/pdmatei/pp2020/blob/master/L14/xzero.pptx)
+  * Simple Lazy Example: [source](https://github.com/pdmatei/pp2020/blob/master/L14/lazy-example.hs)
+  * Tic-Tac-Toe - lazy construction of a game tree: [source](https://github.com/pdmatei/pp2020/blob/master/L14/xandzero.hs)
+
