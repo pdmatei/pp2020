@@ -74,3 +74,8 @@
   * Simple Lazy Example: [source](https://github.com/pdmatei/pp2020/blob/master/L14/lazy-example.hs)
   * Tic-Tac-Toe - lazy construction of a game tree: [source](https://github.com/pdmatei/pp2020/blob/master/L14/xandzero.hs)
 
+* **Lecture 15** - Introduction in Prolog:
+  * Introductory slides: [source](https://github.com/pdmatei/pp2020/blob/master/L15/Prolog-intro.pptx)
+  * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L15/intro.pl)
+
+
