@@ -78,4 +78,6 @@
   * Introductory slides: [source](https://github.com/pdmatei/pp2020/blob/master/L15/Prolog-intro.pptx)
   * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L15/intro.pl)
 
+* **Lecture 16** - Proof trees and unification in Prolog:
+  * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L16/unification.pl)
 
