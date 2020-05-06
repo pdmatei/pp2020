@@ -81,3 +81,5 @@
 * **Lecture 16** - Proof trees and unification in Prolog:
   * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L16/unification.pl)
 
+* **Lecture 16** - Generative predicates:
+  * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L17/generative_preds.pl)
