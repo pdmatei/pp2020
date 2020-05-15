@@ -81,5 +81,12 @@
 * **Lecture 16** - Proof trees and unification in Prolog:
   * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L16/unification.pl)
 
-* **Lecture 16** - Generative predicates:
+* **Lecture 17** - Generative predicates:
   * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L17/generative_preds.pl)
+
+* **Lecture 18** - Programming with cut and negation:
+  * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L18/cut.pl)
+
+* **Lecture 19** - Uninstantiated variables:
+  * Slides (the append example): [source](https://github.com/pdmatei/pp2020/blob/master/L19/Append.pptx)
+  * Examples: [source](https://github.com/pdmatei/pp2020/blob/master/L19/csp.pl)
